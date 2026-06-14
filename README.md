@@ -14,19 +14,11 @@ Este sistema foi desenvolvido como parte da Avaliação Prática da disciplina d
 
 ## 🛠️ Padrões de Projeto Utilizados
 
-### 1. State Pattern (Padrão de Estado)
-Utilizado para controlar o ciclo de vida dinâmico da classe `Pedido`. O pedido transiciona organicamente entre os estados `Pendente` ➡️ `Preparando` ➡️ `Pronto` ➡️ `Finalizado`, delegando o comportamento de transição para classes especialistas de estado (`StatusPedido`).
+### 1. State Pattern
+Utilizado para controlar o ciclo de vida dinâmico da classe `Pedido`. O pedido transiciona organicamente entre os estados `StatusPendente ➡️ StatusEmPreparo ➡️ StatusPronto ➡️ StatusEntregue`, delegando o comportamento de transição para classes especialistas de estado (`StatusPedido`).
 
-### 2. Strategy Pattern (Padrão de Estratégia) - *Padrão Adicional*
+### 2. Strategy Pattern 
 Adotado na classe `Pagamento` para isolar os algoritmos de cálculo de preço (taxas ou descontos) baseados na escolha do cliente. O sistema pode alternar em tempo de execução entre `PagamentoPix` (que concede 5% de desconto) e `PagamentoCartao` (que aplica taxa de 2%), sem alterar a estrutura da classe de negócio.
-
----
-
-## 🧠 Detalhamento de Aprendizado
-
-* **Dificuldades Encontradas:** Compreender a melhor forma de acoplar a mudança de estado do padrão State dentro da própria classe de contexto do pedido em Python.
-* **Como resolvi:** Passando a referência do próprio objeto (`self`) para o método do estado correspondente, permitindo que o estado altere o atributo interno do contexto de forma limpa.
-* **Principal Aprendizado:** Entender que padrões de projeto não acrescentam complexidade à toa, mas sim tornam o código escalável. Adicionar um novo método de pagamento ou um novo status de pedido agora exige apenas criar uma nova classe, sem quebrar o código antigo (Princípio Aberto/Fechado).
 
 ## 🤖 Declaração de Uso de IA
 * Utilizei IA como ferramenta de apoio.
