@@ -4,7 +4,8 @@ from models.mesa import Mesa
 class Restaurante:
     def __init__(self, nome):
         self.nome = nome
-        self.lista_mesas = []  
+        #LISTAS PARA GERENCIAR MESAS, CLIENTES, FUNCIONÁRIOS, CARDÁPIO E PEDIDOS
+        self.mesas = []  
         self.clientes = []
         self.funcionarios = []
         self.cardapio = []
@@ -19,3 +20,4 @@ class Restaurante:
     def abrir_pedido(self, pedido):
         self.pedidos.append(pedido)
         pedido.mesa.ocupada = True
+        #REGRA DE NEGÓCIO: AO ABRIR UM PEDIDO, A MESA FICA OCUPADA

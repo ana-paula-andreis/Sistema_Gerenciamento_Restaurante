@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-# Classe Abstrata base para todos os estados
+#CLASSE ABSTRATA PARA OS ESTADOS DO PEDIDO
 class StatusPedido(ABC):
     @abstractmethod
     def proximo_estagio(self, pedido):
@@ -10,7 +10,7 @@ class StatusPedido(ABC):
     def __str__(self):
         pass
 
-# Estado 1: Pendente
+#ESTADO INICIAL: PENDENTE
 class StatusPendente(StatusPedido):
     def proximo_estagio(self, pedido):
         print(f"Pedido nº {pedido.numero_pedido} foi recebido. Mudando status para Em Preparo.")
@@ -19,16 +19,17 @@ class StatusPendente(StatusPedido):
     def __str__(self):
         return "Pendente"
     
-# Estado 2: Em Preparo
+#ESTADO 2: EM PREPARO
 class StatusEmPreparo(StatusPedido):
     def proximo_estagio(self, pedido):
         print(f"Pedido nº {pedido.numero_pedido} está sendo cozinhado. Mudando status para Pronto.")
+        #POLIMORFISMO: MUDANDO O ESTADO DO PEDIDO PARA PRONTO
         pedido.status = StatusPronto()
 
     def __str__(self):
-        return "Em Preparo"
+        return "Em Preparo" 
 
-# Estado 3: Pronto
+#ESTADO 3: PRONTO
 class StatusPronto(StatusPedido):    
     def proximo_estagio(self, pedido):
         print(f"Pedido nº {pedido.numero_pedido} está pronto para entrega. Mudando status para Entregue.")
@@ -37,7 +38,7 @@ class StatusPronto(StatusPedido):
     def __str__(self):
         return "Pronto"
     
-# Estado 4: Entregue/Finalizado
+#ESTADO FINAL: ENTREGUE
 class StatusEntregue(StatusPedido):
     def proximo_estagio(self, pedido):
         print(f"O pedido nº {pedido.numero_pedido} já foi entregue e finalizado. Não há próximas etapas.")

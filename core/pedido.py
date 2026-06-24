@@ -7,12 +7,15 @@ class Pedido:
         self.numero_pedido = numero_pedido
         self.mesa = mesa
         self.itens = []
+        #PEDIDO COMEÇA COM STATUS PENDENTE
         self.status = status_pedido.StatusPendente()  
         self.valor_total = 0.0
 
     def adicionar_item(self, item):
         self.itens.append(item)
         self.valor_total += item.preco
+        #ACUMULANDO O VALOR TOTAL DO PEDIDO
 
     def avancar_status(self):
+        #O PEDIDO NÃO SABE COMO MUDAR DE STATUS, ELE DELEGA ESSA RESPONSABILIDADE PARA O OBJETO STATUS
         self.status.proximo_estagio(self)
